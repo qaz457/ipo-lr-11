@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hacker News Parser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #4a6fa5;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .source-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background: #4a6fa5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .source-link:hover {
+            background: #3a5a80;
+        }
+    </style>
+</head>
+<body>
+    <h1>📰 Новости с Hacker News</h1>
+    <table>
+        <tr>
+            <th>№</th>
+            <th>Заголовок</th>
+            <th>Комментарии</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Bun has been acquired by Anthropic</td>
+            <td>48 comments</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>100000 TPS over a billion rows: the unreasonable effectiveness of SQLite</td>
+            <td>1 comment</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>I Designed and Printed a Custom Nose Guard to Help My Dog with DLE</td>
+            <td>18 comments</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Learning Music with Strudel</td>
+            <td>59 comments</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>The Junior Hiring Crisis</td>
+            <td>1 comment</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Mistral 3 family of models released</td>
+            <td>142 comments</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Nixtml: Static website and blog generator written in Nix</td>
+            <td>16 comments</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Addressing the adding situation</td>
+            <td>68 comments</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Poka Labs (YC S24) Is Hiring a Founding Engineer</td>
+            <td>no comment</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>YesNotice</td>
+            <td>40 comments</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Advent of Compiler Optimisations 2025</td>
+            <td>44 comments</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Python Data Science Handbook</td>
+            <td>28 comments</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Show HN: Marmot – Single-binary data catalog (no Kafka, no Elasticsearch)</td>
+            <td>12 comments</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>Lowtype: Elegant Types in Ruby</td>
+            <td>7 comments</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>4.3M Browsers Infected: Inside ShadyPanda's 7-Year Malware Campaign</td>
+            <td>1 comment</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>Apple Releases Open Weights Video Model</td>
+            <td>126 comments</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>A series of vignettes from my childhood and early career</td>
+            <td>75 comments</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>What will enter the public domain in 2026?</td>
+            <td>285 comments</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>YouTube increases FreeBASIC performance (2019)</td>
+            <td>32 comments</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>Comparing AWS Lambda ARM64 vs. x86_64 Performance Across Runtimes in Late 2025</td>
+            <td>47 comments</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>Lazier Binary Decision Diagrams for set-theoretic types</td>
+            <td>5 comments</td>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>Apple to beat Samsung in smartphone shipments for first time in 14 years</td>
+            <td>22 comments</td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>Beej's Guide to Learning Computer Science</td>
+            <td>115 comments</td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>Anthropic Acquires Bun</td>
+            <td>8 comments</td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>How Brian Eno Created Ambient 1: Music for Airports (2019)</td>
+            <td>85 comments</td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>Show HN: RunMat – runtime with auto CPU/GPU routing for dense math</td>
+            <td>3 comments</td>
+        </tr>
+        <tr>
+            <td>27</td>
+            <td>An LED panel that shows the aviation around you</td>
+            <td>17 comments</td>
+        </tr>
+        <tr>
+            <td>28</td>
+            <td>Progress on TypeScript 7 – December 2025</td>
+            <td>5 comments</td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>Fallout 2's Chris Avellone describes his game design philosophy</td>
+            <td>18 comments</td>
+        </tr>
+        <tr>
+            <td>30</td>
+            <td>Memtest86+ v8.00 Released</td>
+            <td>discuss</td>
+        </tr>
+    </table>
+    <a href="https://news.ycombinator.com/" target="_blank" class="source-link">
+        🔗 Перейти на оригинальный сайт Hacker News
+    </a>
+</body>
+</html>
